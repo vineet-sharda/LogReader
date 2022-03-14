@@ -1,0 +1,25 @@
+﻿<Window x:Class="Wpf_LogReader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_LogReader"
+        mc:Ignorable="d"
+        Title="Log Reader" Height="609" Width="824">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="221*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Files" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.093,-7.146" FontSize="16"/>
+        <Button Name="btnAddFile" Content=" Add " HorizontalAlignment="Left" Margin="76,7,0,0" VerticalAlignment="Top" Click="btnAddFile_Click" RenderTransformOrigin="0.715,-1.376"/>
+        <Button x:Name="btnClear" Content=" Clear " HorizontalAlignment="Left" Margin="114,7,0,0" VerticalAlignment="Top" Click="btnClear_Click"/>
+        <Button Name="btnProcess" Content=" Process " HorizontalAlignment="Left" Margin="160,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.492,-6.436" Click="btnProcess_Click"/>
+        <ListBox Name="lstFiles" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,33,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="231" Width="221" />
+        <Label Content="Collections" HorizontalAlignment="Left" Margin="0,269,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.474,-0.905" FontSize="16"/>
+        <ListBox Name="lstLogGroupCollection" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,300,0,0" SelectionChanged="lstLogGroupCollection_SelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="221"/>
+        <Label Name="lblGroup" Content="Collection Name" VerticalAlignment="Top" Margin="226,3,66,0" FontSize="24"/>
+        <DataGrid Name="grdLog" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="224,49,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" BeginningEdit="grdLog_BeginningEdit" >
+        </DataGrid>
+        <Button x:Name="btnExport" Content=" Export " Margin="0,5,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btnExport_Click" Grid.Column="1"/>
+    </Grid>
+</Window>

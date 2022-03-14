@@ -1,0 +1,13 @@
+﻿<Window x:Class="Wpf_LogReader.winLogDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_LogReader"
+        mc:Ignorable="d"
+        Title="winLogDetail" Height="500" Width="500">
+    <Grid>
+        <ListBox x:Name="lstLogEntry" Margin="0,0,0,200" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="lstLogEntry_SelectionChanged" />
+        <TextBox x:Name="txtLog" Margin="0,0,0,0" TextWrapping="Wrap" Text="" IsReadOnly="True"  VerticalAlignment="Bottom" Height="198" VerticalScrollBarVisibility="Auto"/>
+    </Grid>
+</Window>
