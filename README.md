@@ -8,6 +8,6 @@ Log files usually have logs which are mostly similar. This reader can
  - read particular errors, if needed.
 
 
-Tested with 112MB file with 790,000 rows.
+Tested with 115 MB file with 790,000 rows.
 Application remained responsive and without any spike in RAM usage.
 
