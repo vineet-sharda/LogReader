@@ -57,7 +57,7 @@ namespace Wpf_LogReader
         private void btnProcess_Click(object sender, RoutedEventArgs e)
         {
             if (this.files == null) return;
-            this.fileReader = new FileReader() { MaxLogLength = 100 };
+            this.fileReader = new FileReader();
             foreach (FileHandler file in this.files.Files)
             {
                 this.fileReader.FileHandler = file;

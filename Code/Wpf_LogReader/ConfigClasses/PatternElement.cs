@@ -56,7 +56,7 @@ namespace Wpf_LogReader.ConfigClasses
         }
 
         [ConfigurationProperty("logStartFrom",
-            DefaultValue = (int)0,
+            DefaultValue = 0,
             IsRequired = false)]
         [IntegerValidator(MinValue = 0,
             MaxValue = 500, ExcludeRange = false)]
