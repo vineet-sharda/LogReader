@@ -19,8 +19,6 @@ namespace Wpf_LogReader
 
         public LogGroupCollection Logs { get; set; }
 
-        public int MaxLogLength { get; set; }
-
         public void LoadLogs()
         {
             int lineNumber = 0;
@@ -39,7 +37,8 @@ namespace Wpf_LogReader
                 string logText = grouplog[1];
                 if (logText == "") continue;
 
-                logText = logText.Length > this.MaxLogLength ? logText.Substring(0, this.MaxLogLength) : logText;
+                int maxLogLength = ConfigHandler.ReaderSettings.LogText.MaxLength;
+                logText = logText.Length > maxLogLength ? logText.Substring(0, maxLogLength) : logText;
                 group.Add(logText.Trim(), this.FileHandler.Id, lineNumber, DateTime.Parse(dateTimeStamp));
             }
         }

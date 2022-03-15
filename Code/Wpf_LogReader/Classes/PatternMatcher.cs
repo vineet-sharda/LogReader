@@ -11,24 +11,17 @@ namespace Wpf_LogReader
 {
     public static class PatternMatcher
     {
-        static PatternMatcherSection configPatternSection;
-        static PatternMatcher()
-        {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            configPatternSection = config.GetSection("patternMatcher") as PatternMatcherSection;
-            configPatternSection = configPatternSection == null ? new PatternMatcherSection() : configPatternSection;
-        }
-
         public static void LogStart(string text, ref string dateTimeStamp, ref string logWithIdRemoved)
         {
-            for (int i = 0; i < configPatternSection.Patterns.Count; i++)
+            PatternCollection patterns = ConfigHandler.ReaderSettings.PatternMatcherSettings.Patterns;
+            for (int i = 0; i < patterns.Count; i++)
             {
-                PatternElement pattern = configPatternSection.Patterns[i];
+                PatternElement pattern = patterns[i];
 
                 Regex regex = new Regex(pattern.Match);
                 if (regex.IsMatch(text))
                 {
-                    regex = new Regex(configPatternSection.DateTimeStampPattern.Match);
+                    regex = new Regex(ConfigHandler.ReaderSettings.PatternMatcherSettings.DateTimeStampPattern.Match);
                     dateTimeStamp = regex.Match(text).Value;
                     logWithIdRemoved = text.Substring(pattern.LogStartFrom);
                     return;
@@ -41,7 +34,7 @@ namespace Wpf_LogReader
 
         public static string[] SplitGroupAndEntry(string text)
         {
-            int position = text.IndexOf(configPatternSection.GroupLogSplitter.Splitter);
+            int position = text.IndexOf(ConfigHandler.ReaderSettings.PatternMatcherSettings.GroupLogSplitter.Splitter);
             if (position < 0)
             {
                 return new string[] { text, "" };
