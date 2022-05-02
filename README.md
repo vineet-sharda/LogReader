@@ -1,7 +1,7 @@
 # Log Reader
 "A few-weekend project"
 
-Log files usually have logs which are mostly similar. This reader can
+Log files usually have thousands of logs, which are mostly similar. Sifting through them is time consuming. This reader can
  - read multiple log files
  - aggregate similar errors
  - export results to csv file
